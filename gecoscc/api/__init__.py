@@ -55,9 +55,9 @@ class BaseAPI(object):
             branch_path = schema['path'].split(',')[3]
             parent_ou = self.request.db.nodes.find_one({'_id': ObjectId(branch_path)})
             schema['maintenance'] = parent_ou.get('maintenance', False)
-
             if parent_ou.get('user_maintenance', False):
                 schema['user_maintenance'] = unicode(parent_ou.get('user_maintenance'))
+
         return schema
 
     def parse_collection(self, collection):
